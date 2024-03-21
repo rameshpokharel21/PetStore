@@ -8,9 +8,9 @@ namespace ProductCollection;
 internal class Product(string name, decimal price, int quantity, string description)
 {
 
-    public string Name { get; set; } = name;
+    public string Name { get; private set; } = name;
 
-    public decimal Price { get; set; } = price;
-    public int Quantity { get; set; } = quantity;
-    public string Description { get; set; } = description;
+    public decimal Price { get; private set; } = price;
+    public int Quantity { get; private set; } = quantity;
+    public string Description { get; private set; } = description;
 }
