@@ -16,10 +16,10 @@ string? userInput = Console.ReadLine() ?? "0";
 
 while (userInput != "exit")
 {
-    int convertedInput;
+    int convertedInput = 0;
     string? name;
-    decimal price;
-    int quantity;
+    decimal price = 0.00M;
+    int quantity = 0;   
     string? description;
 
     int.TryParse(userInput, out convertedInput);
@@ -63,8 +63,8 @@ while (userInput != "exit")
     */
     if (convertedInput == 1)
     {
-        double weightPounds;
-        bool kittenFood;
+        double weightPounds = 0;
+        bool kittenFood = false;
 
         Console.WriteLine("\nEnter weight in pounds for cat food:");
         double.TryParse(Console.ReadLine(), out weightPounds);
@@ -92,8 +92,8 @@ while (userInput != "exit")
     */
     if (convertedInput == 2)
     {
-        int lengthInches;
-        string material;
+        int lengthInches = 0;
+        string? material;
 
         Console.WriteLine("\nEnter leash length in inches(whole number):");
         int.TryParse(Console.ReadLine(), out lengthInches);
