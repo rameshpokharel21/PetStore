@@ -14,7 +14,7 @@ Console.WriteLine("Type 'exit' to quit.");
 
 string? userInput = Console.ReadLine() ?? "0";
 
-while (userInput != "exit")
+while (userInput.ToLower() != "exit")
 {
     int convertedInput = 0;
     string? name;
