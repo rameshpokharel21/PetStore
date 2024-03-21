@@ -86,7 +86,6 @@ while (userInput.ToLower() != "exit")
     /*
      DogLeash class Properties entries from user
     and initializing and displaying DogLeash object
-    it truncates other numerical value to int for LengthInches Property
     if user enter other than int type for LengthInches, it takes 0
     if string is null, it takes 'no material type' for Material Property
     */
