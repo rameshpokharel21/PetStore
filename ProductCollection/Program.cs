@@ -163,8 +163,8 @@ while (userInput.ToLower() != "exit")
         }
     }
 
-    Console.WriteLine("\nPress 1 to enter Product type of CatFood.");
-    Console.WriteLine("Press 2 to enter Product type of DogLeash.");
+    Console.WriteLine("\nPress 1 to add a Product.");
+    Console.WriteLine("Press 2 to print a product by name.");
     Console.WriteLine("Type 'exit' to quit.");
 
     userInput = Console.ReadLine() ?? "0";
