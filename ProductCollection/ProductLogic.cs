@@ -19,12 +19,12 @@ internal class ProductLogic
 
         if(product is DogLeash)
         {
-            _dogLeash.Add(key: product.Name, value: product as DogLeash);
+            _dogLeash.Add(key: product.Name, value: (DogLeash) product);
         }
 
         if (product is CatFood)
         {
-            _catFood.Add(key: product.Name, value: product as CatFood);
+            _catFood.Add(key: product.Name, value:( CatFood) product);
         }
     }
 
@@ -33,21 +33,28 @@ internal class ProductLogic
         return _products;
     }
 
+    //if key is not found, null is thrown
+    //that should be caught inside main program
     public DogLeash GetDogLeashByName(string name)
     {
-        if(!_dogLeash.ContainsKey(name.ToLower()))
+        if (_dogLeash.ContainsKey(name))
         {
-            throw new ArgumentException($"Wrong name {name}");
+            return _dogLeash[name];
+            //throw new ArgumentException($"No dog leash with name: {name}");
         }
-        return _dogLeash[name];
+        return null;
+
     }
 
+    //if key is not found, null is thrown
+    //should be caught in main program
     public CatFood GetCatFoodByName(string name)
     {
-        if (!_catFood.ContainsKey(name.ToLower()))
+        if (_catFood.ContainsKey(name))
         {
-            throw new ArgumentException($"Wrong name {name}");
+            return _catFood[name];
+            //throw new ArgumentException($"No cat food with name: {name}");
         }
-        return _catFood[name];
+        return null;
     }
 }
