@@ -42,7 +42,7 @@ while (userInput.ToLower() != "exit")
     First get user inputs for parent class Properties
     which is inherited to all derived classes
     For null name it takes "no name".
-    if user enters letter for numerical value, it takes 0
+    when user enters 1:
     It takes 0 if user enters other than integer type for Quantity Property
     */
 
@@ -90,7 +90,8 @@ while (userInput.ToLower() != "exit")
         /*
          CatFood class Properties input from user
         and initializing and displaying CatFood object
-        if user enters non-numerial value for double, it takes 0
+        User is not allowed to enter other types for double
+        and bool.
         if user enters other than bool for bool type, it takes false
         */
         if (typeName.ToLower().Equals("catfood"))
@@ -122,7 +123,8 @@ while (userInput.ToLower() != "exit")
         /*
          DogLeash class Properties entries from user
         and initializing and displaying DogLeash object
-        if user enter other than int type for LengthInches, it takes 0
+        if user is not allowed to enter differt data type
+        for int type.
         if string is null, it takes 'no material type' for Material Property
         */
         if (typeName.ToLower().Equals("dogleash"))
@@ -149,6 +151,7 @@ while (userInput.ToLower() != "exit")
         }
     }
 
+    //when user enters 2
     if (convertedInput == 2)
     {
 
