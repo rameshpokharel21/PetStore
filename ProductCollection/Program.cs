@@ -18,7 +18,7 @@ Console.WriteLine("Type 'exit' to quit.");
 
 string? userInput = Console.ReadLine() ?? "0";
 
-while (userInput.ToLower() != "exit")
+while (!userInput.ToLower().Equals("exit"))
 {
     int convertedInput = 0;
     string? name;
@@ -32,7 +32,6 @@ while (userInput.ToLower() != "exit")
     if (convertedInput != 1 && convertedInput != 2)
     {
 
-        //throw new ArgumentOutOfRangeException($"Wrong entry: {userInput}");
         Console.WriteLine($"\nWrong input: {userInput}");
         break;
 
@@ -54,7 +53,7 @@ while (userInput.ToLower() != "exit")
         Console.WriteLine("\nType catfood or dogleash to add them:");
         string? typeName = Console.ReadLine().ToLower() ?? "none";
 
-        if (typeName.ToLower() != "dogleash" && typeName.ToLower() != "catfood")
+        if (!typeName.ToLower().Equals("dogleash") && !typeName.ToLower().Equals("catfood"))
         {
             Console.WriteLine($"Wrong prduct type: {typeName}");
 
@@ -174,7 +173,7 @@ while (userInput.ToLower() != "exit")
             }
             else
             {
-                Console.WriteLine($"name does not exist: {productName}");
+                Console.WriteLine($"The name does not exist: {productName}");
             }
         
 
@@ -182,8 +181,6 @@ while (userInput.ToLower() != "exit")
 
     }
 
-
-    Console.WriteLine($"\nThe toal product counts: {productLogic.GetAllProducts().Count}");
 
     Console.WriteLine("\nPress 1 to add a Product.");
     Console.WriteLine("Press 2 to print a product by name.");

@@ -40,7 +40,7 @@ internal class ProductLogic
         if (_dogLeash.ContainsKey(name))
         {
             return _dogLeash[name];
-            //throw new ArgumentException($"No dog leash with name: {name}");
+            
         }
         return null;
 
@@ -53,7 +53,7 @@ internal class ProductLogic
         if (_catFood.ContainsKey(name))
         {
             return _catFood[name];
-            //throw new ArgumentException($"No cat food with name: {name}");
+            
         }
         return null;
     }
