@@ -1,4 +1,5 @@
 ﻿using ProductCollection;
+using System;
 using System.Text.Json;
 
 /*
@@ -14,11 +15,11 @@ Product? dogLeash;
 
 Console.WriteLine("\nPress 1 to add a Product.");
 Console.WriteLine("Press 2 to print a product by name.");
-Console.WriteLine("Type 'exit' to quit.");
+Console.WriteLine("Type 'exit' to quit."); 
 
 string? userInput = Console.ReadLine() ?? "0";
 
-while (!userInput.ToLower().Equals("exit"))
+while (!userInput.Equals("exit", StringComparison.OrdinalIgnoreCase))
 {
     int convertedInput = 0;
     string? name;
@@ -51,17 +52,22 @@ while (!userInput.ToLower().Equals("exit"))
     if (convertedInput == 1)
     {
         Console.WriteLine("\nType catfood or dogleash to add them:");
-        string? typeName = Console.ReadLine().ToLower() ?? "none";
+        string? typeName = Console.ReadLine() ?? "none";
 
-        if (!typeName.ToLower().Equals("dogleash") && !typeName.ToLower().Equals("catfood"))
+        if (!typeName.Equals("dogleash", StringComparison.OrdinalIgnoreCase) && !typeName.Equals("catfood", StringComparison.OrdinalIgnoreCase))
         {
             Console.WriteLine($"Wrong prduct type: {typeName}");
 
             break;
         }
 
-        Console.WriteLine("\nEnter name of the product:");
-        name = Console.ReadLine().ToLower() ?? "no name";
+        do
+        {
+            Console.WriteLine("\nEnter name of the product:");
+            name = Console.ReadLine().ToLower() ?? "no name";
+        }
+        while (productLogic.GetCatFoodByName(name) != null || productLogic.GetDogLeashByName(name) != null);
+
         Console.WriteLine($"The received value is {name}");
 
         do
@@ -93,7 +99,7 @@ while (!userInput.ToLower().Equals("exit"))
         and bool.
         if user enters other than bool for bool type, it takes false
         */
-        if (typeName.ToLower().Equals("catfood"))
+        if (typeName.Equals("catfood", StringComparison.OrdinalIgnoreCase))
         {
             double weightPounds = 0;
             bool kittenFood = false;
@@ -126,7 +132,7 @@ while (!userInput.ToLower().Equals("exit"))
         for int type.
         if string is null, it takes 'no material type' for Material Property
         */
-        if (typeName.ToLower().Equals("dogleash"))
+        if (typeName.Equals("dogleash", StringComparison.OrdinalIgnoreCase))
         {
             int lengthInches = 0;
             string? material;
@@ -155,8 +161,8 @@ while (!userInput.ToLower().Equals("exit"))
     {
 
         Console.WriteLine("\nEnter product name:");
-        
-            string? productName = Console.ReadLine().ToLower() ?? "no name";
+
+        string? productName = Console.ReadLine().ToLower() ?? "no name";
             
 
             if (productLogic.GetCatFoodByName(productName) is not null)
