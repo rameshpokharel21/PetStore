@@ -1,3 +1,4 @@
+4/4: Added ToStiring() method for Product class and also for subclasses DogLeash and CatFood. Refactored Program class and PrintMessages() method to display instructions for user.
 3/29: Updated ProductLogic class: if key is not found from the 
 Dictionary class null is thrown instead of Argument Exception
 That null is checked when outputting Dictionary collection of 
