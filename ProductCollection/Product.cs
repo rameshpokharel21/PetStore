@@ -13,4 +13,5 @@ internal class Product(string name, decimal price, int quantity, string descript
     public decimal Price { get; private set; } = price;
     public int Quantity { get; private set; } = quantity;
     public string Description { get; private set; } = description;
+    public string ToString() => $"Name: {Name}\nPrice: {Price:C2}\nQuantity: {Quantity}\nDescription: {Description}";
 }

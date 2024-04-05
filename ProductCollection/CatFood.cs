@@ -10,4 +10,5 @@ internal class CatFood(string name, decimal price, int quantity, string descript
 {
     public double WeightPounds { get; private set; } = weightPounds;
     public bool KittenFood { get; private set; } = kittenFood;
+    public string ToString() => $"{base.ToString()}\nWeight(pounds): {WeightPounds}\nIsKittenFood: {KittenFood}";
 }

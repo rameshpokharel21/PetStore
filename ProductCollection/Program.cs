@@ -1,5 +1,5 @@
 ﻿using ProductCollection;
-using System;
+using System.Text;
 using System.Text.Json;
 
 /*
@@ -13,9 +13,7 @@ ProductLogic productLogic = new ProductLogic();
 Product? catFood;
 Product? dogLeash;
 
-Console.WriteLine("\nPress 1 to add a Product.");
-Console.WriteLine("Press 2 to print a product by name.");
-Console.WriteLine("Type 'exit' to quit."); 
+PrintMessages();
 
 string? userInput = Console.ReadLine() ?? "0";
 
@@ -24,7 +22,7 @@ while (!userInput.Equals("exit", StringComparison.OrdinalIgnoreCase))
     int convertedInput = 0;
     string? name;
     decimal price = 0.00M;
-    int quantity = 0;   
+    int quantity = 0;
     string? description;
 
     int.TryParse(userInput, out convertedInput);
@@ -80,15 +78,16 @@ while (!userInput.Equals("exit", StringComparison.OrdinalIgnoreCase))
         Console.WriteLine($"The received value is {price}");
 
 
-        do {
+        do
+        {
             Console.WriteLine("\nEnter quantity as a whole number:");
         }
         while (!int.TryParse(Console.ReadLine(), out quantity));
-        
+
         Console.WriteLine($"The received value is {quantity}");
 
-            Console.WriteLine("\nEnter description for the product:");
-        
+        Console.WriteLine("\nEnter description for the product:");
+
         description = Console.ReadLine() ?? "no description";
         Console.WriteLine($"The received value is {description}");
 
@@ -97,28 +96,29 @@ while (!userInput.Equals("exit", StringComparison.OrdinalIgnoreCase))
         and initializing and displaying CatFood object
         User is not allowed to enter other types for double
         and bool.
-        if user enters other than bool for bool type, it takes false
         */
         if (typeName.Equals("catfood", StringComparison.OrdinalIgnoreCase))
         {
             double weightPounds = 0;
             bool kittenFood = false;
-            do {
+            do
+            {
                 Console.WriteLine("\nEnter weight in pounds for cat food:");
             }
-            while(!double.TryParse(Console.ReadLine(), out weightPounds));
+            while (!double.TryParse(Console.ReadLine(), out weightPounds));
             Console.WriteLine($"The received value is {weightPounds}");
 
-            do {
+            do
+            {
                 Console.WriteLine("\nIs it kitten food(true or false)");
             }
-            while(!bool.TryParse(Console.ReadLine(), out kittenFood));
+            while (!bool.TryParse(Console.ReadLine(), out kittenFood));
             Console.WriteLine($"The received value is {kittenFood}");
 
             //creating CatFood object with given Properties
             catFood = new CatFood(name, price, quantity, description, weightPounds, kittenFood);
 
-           
+
             productLogic.AddProduct((CatFood)catFood);
 
             Console.WriteLine("\nThe CatFood product was added to the productLogic List\n");
@@ -136,10 +136,11 @@ while (!userInput.Equals("exit", StringComparison.OrdinalIgnoreCase))
         {
             int lengthInches = 0;
             string? material;
-            do {
+            do
+            {
                 Console.WriteLine("\nEnter leash length in inches(whole number):");
             }
-            while(!int.TryParse(Console.ReadLine(), out lengthInches));
+            while (!int.TryParse(Console.ReadLine(), out lengthInches));
             Console.WriteLine($"The received value is {lengthInches}");
 
             Console.WriteLine("\nEnter material for the leash:");
@@ -149,7 +150,7 @@ while (!userInput.Equals("exit", StringComparison.OrdinalIgnoreCase))
             //create object with the values provided
             dogLeash = new DogLeash(name, price, quantity, description, lengthInches, material);
 
-            
+
             productLogic.AddProduct((DogLeash)dogLeash);
 
             Console.WriteLine("\nThe DogLeash product was added to the productLogic List\n");
@@ -163,42 +164,46 @@ while (!userInput.Equals("exit", StringComparison.OrdinalIgnoreCase))
         Console.WriteLine("\nEnter product name:");
 
         string? productName = Console.ReadLine().ToLower() ?? "no name";
-            
 
-            if (productLogic.GetCatFoodByName(productName) is not null)
-            {
-               
-                Console.WriteLine(JsonSerializer.Serialize(productLogic.GetCatFoodByName(productName)));
-            }
 
-            else if (productLogic.GetDogLeashByName(productName) is not null)
-            {
-    
-                Console.WriteLine(JsonSerializer.Serialize(productLogic.GetDogLeashByName(productName)));
+        if (productLogic.GetCatFoodByName(productName) is not null)
+        {
+            CatFood food = productLogic.GetCatFoodByName(productName);
+            //Console.WriteLine(JsonSerializer.Serialize(productLogic.GetCatFoodByName(productName)));
+            Console.WriteLine("\nHere is the cat food product:\n");
+            Console.WriteLine(food.ToString());
+        }
 
-            }
-            else
-            {
-                Console.WriteLine($"The name does not exist: {productName}");
-            }
-        
+        else if (productLogic.GetDogLeashByName(productName) is not null)
+        {
+            DogLeash leash = productLogic.GetDogLeashByName(productName);
+            //Console.WriteLine(JsonSerializer.Serialize(productLogic.GetDogLeashByName(productName)));
+            Console.WriteLine("\nHere is the dog leash product:\n");
+            Console.WriteLine(leash.ToString());
 
-       
+        }
+        else
+        {
+            Console.WriteLine($"The name does not exist: {productName}");
+        }
+
+
+
 
     }
 
-
-    Console.WriteLine("\nPress 1 to add a Product.");
-    Console.WriteLine("Press 2 to print a product by name.");
-    Console.WriteLine("Type 'exit' to quit.");
-
+    PrintMessages();
     userInput = Console.ReadLine() ?? "0";
 
-   
 }
+
 Console.WriteLine("\nBye bye!\n");
 
 
-
-
-
+//showing instructions for user
+static void PrintMessages()
+{
+    Console.WriteLine("\nPress 1 to add a Product.");
+    Console.WriteLine("Press 2 to print a product by name.");
+    Console.WriteLine("Type 'exit' to quit.");
+}
