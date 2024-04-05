@@ -18,6 +18,7 @@ PrintMessages();
 string? userInput = Console.ReadLine() ?? "0";
 
 while (!userInput.Equals("exit", StringComparison.OrdinalIgnoreCase))
+
 {
     int convertedInput = 0;
     string? name;
@@ -28,12 +29,16 @@ while (!userInput.Equals("exit", StringComparison.OrdinalIgnoreCase))
     int.TryParse(userInput, out convertedInput);
 
     //if convetedInput is not 1 or 2, throw an exception
+    
     if (convertedInput != 1 && convertedInput != 2)
     {
-
         Console.WriteLine($"\nWrong input: {userInput}");
         break;
-
+    }
+    
+    if(userInput.Equals("exit", StringComparison.OrdinalIgnoreCase))
+    {
+        break;
     }
 
     /*
@@ -43,8 +48,6 @@ while (!userInput.Equals("exit", StringComparison.OrdinalIgnoreCase))
     when user enters 1:
     It takes 0 if user enters other than integer type for Quantity Property
     */
-
-
 
 
     if (convertedInput == 1)
@@ -166,25 +169,25 @@ while (!userInput.Equals("exit", StringComparison.OrdinalIgnoreCase))
         string? productName = Console.ReadLine().ToLower() ?? "no name";
 
 
-        if (productLogic.GetCatFoodByName(productName) is not null)
+        CatFood food = productLogic.GetCatFoodByName(productName);
+        DogLeash leash = productLogic.GetDogLeashByName(productName);
+
+
+        if (food is not null)
         {
-            CatFood food = productLogic.GetCatFoodByName(productName);
-            //Console.WriteLine(JsonSerializer.Serialize(productLogic.GetCatFoodByName(productName)));
             Console.WriteLine("\nHere is the cat food product:\n");
             Console.WriteLine(food.ToString());
         }
 
-        else if (productLogic.GetDogLeashByName(productName) is not null)
-        {
-            DogLeash leash = productLogic.GetDogLeashByName(productName);
-            //Console.WriteLine(JsonSerializer.Serialize(productLogic.GetDogLeashByName(productName)));
+        else if (leash is not null)
+        {     
             Console.WriteLine("\nHere is the dog leash product:\n");
             Console.WriteLine(leash.ToString());
 
         }
         else
         {
-            Console.WriteLine($"The name does not exist: {productName}");
+            Console.WriteLine($"The name is not in the list: {productName}");
         }
 
 
