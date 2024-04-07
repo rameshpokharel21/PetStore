@@ -1,3 +1,5 @@
+4/7: changes made to enforce user input of right type. and added try catch block in GetDogLeashByName() and GetCatFoodByName() methods of ProductLogic class instead of if else. But the return type is still null the type doesn't match.
+
 4/4: Added ToStiring() method for Product class and also for subclasses DogLeash and CatFood. Refactored Program class and PrintMessages() method to display instructions for user.
 3/29: Updated ProductLogic class: if key is not found from the 
 Dictionary class null is thrown instead of Argument Exception
