@@ -33,28 +33,30 @@ internal class ProductLogic
         return _products;
     }
 
-    //if key is not found, null is thrown
-    //that should be caught inside main program
+    //if key is not found, null is returned
     public DogLeash GetDogLeashByName(string name)
-    {
-        if (_dogLeash.ContainsKey(name))
-        {
-            return _dogLeash[name];
+    {   try{
             
+            return _dogLeash[name];           
         }
-        return null;
-
+        catch(Exception)
+        {
+            return null;
+        }
+ 
     }
 
-    //if key is not found, null is thrown
-    //should be caught in main program
+    //if key is not found, null is returned
     public CatFood GetCatFoodByName(string name)
     {
-        if (_catFood.ContainsKey(name))
-        {
-            return _catFood[name];
-            
+        try
+        {            
+            return _catFood[name];         
         }
-        return null;
+        catch (Exception)
+        {  
+            return null;
+        }
+        
     }
 }

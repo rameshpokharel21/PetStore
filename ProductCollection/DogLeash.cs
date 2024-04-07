@@ -10,6 +10,6 @@ internal class DogLeash(string name, decimal price, int quantity, string descrip
 {
     public int LengthInches { get; private set; } = lengthInches;
     public string Material { get; private set; } = material;
-    public string ToString() => $"{base.ToString()}\nLeash length(inches): {LengthInches}\nMaterial Type: {Material}";
+    public override string ToString() => $"{base.ToString()}\nLeash length(inches): {LengthInches}\nMaterial Type: {Material}";
 }
 

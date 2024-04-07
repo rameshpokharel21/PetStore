@@ -28,25 +28,28 @@ while (!userInput.Equals("exit", StringComparison.OrdinalIgnoreCase))
 
     int.TryParse(userInput, out convertedInput);
 
-    //if convetedInput is not 1 or 2, throw an exception
+    //if convetedInput is not 1, 2, or "exit" ask user to reenter
     
-    if (convertedInput != 1 && convertedInput != 2)
+    while (convertedInput != 1 && convertedInput != 2)
     {
         Console.WriteLine($"\nWrong input: {userInput}");
-        break;
+        PrintMessages();
+        userInput = Console.ReadLine() ?? "0";
+        int.TryParse(userInput, out convertedInput);
+        if(userInput.Equals("exit", StringComparison.OrdinalIgnoreCase))
+        {
+            Console.WriteLine("Bye bye!");
+            System.Environment.Exit(0);
+        }
     }
     
-    if(userInput.Equals("exit", StringComparison.OrdinalIgnoreCase))
-    {
-        break;
-    }
-
+    
     /*
     First get user inputs for parent class Properties
     which is inherited to all derived classes
     For null name it takes "no name".
     when user enters 1:
-    It takes 0 if user enters other than integer type for Quantity Property
+    enforces user to input right data type
     */
 
 
@@ -55,13 +58,18 @@ while (!userInput.Equals("exit", StringComparison.OrdinalIgnoreCase))
         Console.WriteLine("\nType catfood or dogleash to add them:");
         string? typeName = Console.ReadLine() ?? "none";
 
-        if (!typeName.Equals("dogleash", StringComparison.OrdinalIgnoreCase) && !typeName.Equals("catfood", StringComparison.OrdinalIgnoreCase))
+        //repeatedly asks user to enter dogleash or catfood as one word if the input is different 
+        while (!typeName.Equals("dogleash", StringComparison.OrdinalIgnoreCase) && !typeName.Equals("catfood", StringComparison.OrdinalIgnoreCase))
         {
-            Console.WriteLine($"Wrong prduct type: {typeName}");
+            Console.WriteLine($"Wrong prduct type: {typeName}.");
 
-            break;
+            Console.WriteLine("\nType catfood or dogleash to add them:");
+            typeName = Console.ReadLine() ?? "none";
+
+            
         }
 
+        //enforces unique product name
         do
         {
             Console.WriteLine("\nEnter name of the product:");
@@ -73,8 +81,9 @@ while (!userInput.Equals("exit", StringComparison.OrdinalIgnoreCase))
 
         do
         {
+        
             Console.WriteLine("\nEnter price for the product:");
-
+            
         }
         while (!decimal.TryParse(Console.ReadLine(), out price));
 
@@ -90,7 +99,6 @@ while (!userInput.Equals("exit", StringComparison.OrdinalIgnoreCase))
         Console.WriteLine($"The received value is {quantity}");
 
         Console.WriteLine("\nEnter description for the product:");
-
         description = Console.ReadLine() ?? "no description";
         Console.WriteLine($"The received value is {description}");
 
@@ -109,6 +117,7 @@ while (!userInput.Equals("exit", StringComparison.OrdinalIgnoreCase))
                 Console.WriteLine("\nEnter weight in pounds for cat food:");
             }
             while (!double.TryParse(Console.ReadLine(), out weightPounds));
+
             Console.WriteLine($"The received value is {weightPounds}");
 
             do
@@ -144,6 +153,7 @@ while (!userInput.Equals("exit", StringComparison.OrdinalIgnoreCase))
                 Console.WriteLine("\nEnter leash length in inches(whole number):");
             }
             while (!int.TryParse(Console.ReadLine(), out lengthInches));
+            
             Console.WriteLine($"The received value is {lengthInches}");
 
             Console.WriteLine("\nEnter material for the leash:");
