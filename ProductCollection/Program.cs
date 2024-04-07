@@ -72,7 +72,7 @@ while (!userInput.Equals("exit", StringComparison.OrdinalIgnoreCase))
         //enforces unique product name
         do
         {
-            Console.WriteLine("\nEnter name of the product:");
+            Console.WriteLine("\nEnter unique name for the product:");
             name = Console.ReadLine().ToLower() ?? "no name";
         }
         while (productLogic.GetCatFoodByName(name) != null || productLogic.GetDogLeashByName(name) != null);
