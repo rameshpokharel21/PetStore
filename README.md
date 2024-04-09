@@ -1,16 +1,21 @@
+4/9: when searching for DogLeash or CatFood type, the refereces for both types were changed to Product type. 
+
 4/8: adding null conditional operator ?. for name input from user
 
-4/7: changes made to enforce user input of right type. and added try catch block in GetDogLeashByName() and GetCatFoodByName() methods of ProductLogic class instead of if else. But the return type is still null the type doesn't match.
+4/7: changes made to enforce user input of right type. and added try catch block in GetDogLeashByName() and GetCatFoodByName() methods of ProductLogic class instead of if else. But the return type is still null if the type doesn't match.
 
 4/4: Added ToStiring() method for Product class and also for subclasses DogLeash and CatFood. Refactored Program class and PrintMessages() method to display instructions for user.
+
 3/29: Updated ProductLogic class: if key is not found from the 
 Dictionary class null is thrown instead of Argument Exception
 That null is checked when outputting Dictionary collection of 
-the right type. 
+the right type.
+
 Updated Program class main method to change the Product name
 Updated for Exercise 2 for Code:You SD January 2024.
 Changed solution name to PetStore.
 Added ProductLogic class.
+
 Refactored main class to convert product name(key for our Dictionary Collection)
 to lower case while input from user and while getting output, only product name
 with lower case is checked and null is checked as well.
