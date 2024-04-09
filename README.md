@@ -1,3 +1,5 @@
+4/8: adding null conditional operator ?. for name input from user
+
 4/7: changes made to enforce user input of right type. and added try catch block in GetDogLeashByName() and GetCatFoodByName() methods of ProductLogic class instead of if else. But the return type is still null the type doesn't match.
 
 4/4: Added ToStiring() method for Product class and also for subclasses DogLeash and CatFood. Refactored Program class and PrintMessages() method to display instructions for user.
