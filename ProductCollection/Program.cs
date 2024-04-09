@@ -179,8 +179,8 @@ while (!userInput.Equals("exit", StringComparison.OrdinalIgnoreCase))
         string? productName = Console.ReadLine().ToLower() ?? "no name";
 
 
-        CatFood food = productLogic.GetCatFoodByName(productName);
-        DogLeash leash = productLogic.GetDogLeashByName(productName);
+        Product food = productLogic.GetCatFoodByName(productName);
+        Product leash = productLogic.GetDogLeashByName(productName);
 
 
         if (food is not null)
