@@ -1,3 +1,5 @@
+4/10: Removed Environment.Exit(). Instead introduced bool flag to 		to check the condition and break out of the nested loop.
+
 4/9: when searching for DogLeash or CatFood type, the refereces for both types were changed to Product type. 
 
 4/8: adding null conditional operator ?. for name input from user
