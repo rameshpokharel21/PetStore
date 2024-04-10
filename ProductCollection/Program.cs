@@ -12,6 +12,7 @@ default value will be 0.
 ProductLogic productLogic = new ProductLogic();
 Product? catFood;
 Product? dogLeash;
+bool isDone = false;
 
 PrintMessages();
 
@@ -38,11 +39,16 @@ while (!userInput.Equals("exit", StringComparison.OrdinalIgnoreCase))
         int.TryParse(userInput, out convertedInput);
         if(userInput.Equals("exit", StringComparison.OrdinalIgnoreCase))
         {
-            Console.WriteLine("Bye bye!");
-            System.Environment.Exit(0);
+            isDone = true;
+            break;
         }
     }
     
+    //if user exits
+    if(isDone)
+    {
+        break;
+    }
     
     /*
     First get user inputs for parent class Properties
