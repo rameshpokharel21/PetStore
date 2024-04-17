@@ -1,6 +1,6 @@
 ﻿namespace ProductCollection;
 
-internal class ProductLogic
+internal class ProductLogic : IProductLogic
 {
     private List<Product> _products;
     private Dictionary<string, DogLeash> _dogLeash;
@@ -11,6 +11,10 @@ internal class ProductLogic
         _products = new List<Product>();
         _dogLeash = new Dictionary<string, DogLeash>();
         _catFood = new Dictionary<string, CatFood>();
+
+        _products.Add(new DogLeash("amazon leash", 23.33m, 2, "Strong and reliable", 48, "Leather"));
+        _products.Add(new CatFood("freshy fish", 35.50m, 3, "healthy for cat", 2.5, true));
+        _products.Add(new DogLeash("homeMade leash", 0m, 0, "local product", 60, "Plastic"));
     }
 
     public void AddProduct(Product product)
@@ -58,5 +62,14 @@ internal class ProductLogic
             return null;
         }
         
+    }
+
+    public List<string> GetOnlyInStockProducts()
+    {
+        return _products
+            .Where(product => product.Quantity > 0)
+            .Select(product => product.Name)
+            .ToList();
+            
     }
 }

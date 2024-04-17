@@ -5,7 +5,7 @@
 namespace ProductCollection;
 
 
-internal class Product(string name, decimal price, int quantity, string description)
+public class Product(string name, decimal price, int quantity, string description)
 {
 
     public string Name { get; private set; } = name;

@@ -1,3 +1,7 @@
+4/16: Updated for PetStore Part 4.
+	Added IProductLogic interface with two abstract methods. 	ProductLogic class implements IProductLogic.
+	Changed Program class with main method: Added option 3 to list 	in-stock products. Modified if else if logic with switch 		statement.
+	
 4/10: Removed Environment.Exit(). Instead introduced bool flag to 		to check the condition and break out of the nested loop.
 
 4/9: when searching for DogLeash or CatFood type, the refereces for both types were changed to Product type. 
