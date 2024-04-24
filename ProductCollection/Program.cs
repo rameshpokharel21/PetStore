@@ -1,5 +1,6 @@
 ﻿using ProductCollection;
 
+#region main program
 
 /*
 
@@ -10,22 +11,13 @@ for using as a key (or id) for the product.
 */
 
 ProductLogic productLogic = new ProductLogic();
-Product? catFood;
-Product? dogLeash;
-
 PrintMessages();
-
 string? userInput = Console.ReadLine() ?? "0";
 
 while (!userInput.Equals("exit", StringComparison.OrdinalIgnoreCase))
 
 {
     int convertedInput = 0;
-    string? name;
-    decimal price = 0.00M;
-    int quantity = 0;
-    string? description;
-
     int.TryParse(userInput, out convertedInput);
 
     /*
@@ -36,37 +28,11 @@ while (!userInput.Equals("exit", StringComparison.OrdinalIgnoreCase))
     switch (convertedInput)
     {
         case 1:
-           
-            string typeName = GetProductType();
-            name = GetProductName(productLogic);
-            price = GetProductPrice();
-            quantity = GetProductQuantity();
-            description = GetProductDescription();
-
-            if (typeName.Equals("catfood", StringComparison.OrdinalIgnoreCase))
-            {
-               double weightPounds = GetCatFoodWeightInPounds();
-               bool kittenFood = IsCatFood();
-               catFood = new CatFood(name, price, quantity, description, weightPounds, kittenFood);
-               productLogic.AddProduct((CatFood)catFood);
-               Console.WriteLine("\nThe CatFood product was added to the productLogic List\n");        
-
-            }
-           
-            else if (typeName.Equals("dogleash", StringComparison.OrdinalIgnoreCase))
-            {
-                int lengthInches = GetLeashLengthInInches();
-                string? material = GetLeashMaterialType();        
-                dogLeash = new DogLeash(name, price, quantity, description, lengthInches, material);
-                productLogic.AddProduct((DogLeash)dogLeash);
-                Console.WriteLine("\nThe DogLeash product was added to the productLogic List\n");
-            }
+            AddProductToList(productLogic);
             break;
 
         case 2:
-            Console.WriteLine("\nEnter product name:");
-            string? productName = Console.ReadLine()?.ToLower() ?? "no name";
-            PrintProductByName(productLogic, productName);           
+            PrintProductByName(productLogic);
             break;
 
         case 8:
@@ -95,7 +61,41 @@ Console.WriteLine(@"
     Thank you for visiting Pet Store.
     Bye bye!
         ");
+#endregion
 
+
+#region Option 1
+static void AddProductToList( ProductLogic productLogic)
+{
+    string typeName = GetProductType();
+    string name = GetProductName(productLogic);
+    decimal price = GetProductPrice();
+    int quantity = GetProductQuantity();
+    string description = GetProductDescription();
+
+    if (typeName.Equals("catfood", StringComparison.OrdinalIgnoreCase))
+    {
+        double weightPounds = GetCatFoodWeightInPounds();
+        bool kittenFood = IsCatFood();
+        Product product = new CatFood(name, price, quantity, description, weightPounds, kittenFood);
+        productLogic.AddProduct((CatFood)product);
+        Console.WriteLine("\nThe CatFood product was added to the productLogic List\n");
+
+    }
+
+    else if (typeName.Equals("dogleash", StringComparison.OrdinalIgnoreCase))
+    {
+        int lengthInches = GetLeashLengthInInches();
+        string? material = GetLeashMaterialType();
+        Product product = new DogLeash(name, price, quantity, description, lengthInches, material);
+        productLogic.AddProduct((DogLeash)product);
+        Console.WriteLine("\nThe DogLeash product was added to the productLogic List\n");
+    }
+}
+
+#endregion
+
+#region Helper static methods
 
 static void PrintMessages()
 {
@@ -217,8 +217,14 @@ static string GetLeashMaterialType()
     string materialType = Console.ReadLine() ?? "no material type";
     return materialType;
 }
-static void PrintProductByName(ProductLogic logic, string name)
+
+#endregion
+
+#region Option 2
+static void PrintProductByName(ProductLogic logic)
 {
+    Console.WriteLine("\nEnter product name:");
+    string? name = Console.ReadLine()?.ToLower() ?? "no name";
     Product food = logic.GetCatFoodByName(name);
     Product leash = logic.GetDogLeashByName(name);
 
@@ -259,49 +265,9 @@ static void PrintProductByName(ProductLogic logic, string name)
         Console.WriteLine($"The name is not in the list: {name}");
     }
 }
+#endregion
 
-static void PrintLOutOfProductsList(ProductLogic productLogic)
-{
-    List<Product> outOfStockProducts = productLogic.GetOutOfStockProducts();
-    if (outOfStockProducts?.Count > 0)
-    {
-        int outOfstockCounter = 0;
-        Console.WriteLine("\nOut-of-stock products:");
-        Console.WriteLine("-------------------------");
-        foreach (var product in outOfStockProducts)
-        {
-            Console.WriteLine($"{++outOfstockCounter}. {product}\n");
-        }
-        Console.WriteLine("-------------------------");
-    }
-    else
-    {
-        Console.WriteLine("There isn't any out-of-stock product now.");
-    }
-    Console.WriteLine();
-}
-
-static void PrintInStockProductNamesList(ProductLogic productLogic)
-{
-    List<string> inStockProducts = productLogic.GetOnlyInStockProducts();
-    if (inStockProducts?.Count > 0)
-    {
-        int instockCounter = 0;
-        Console.WriteLine("\nin-stock product names:");
-        Console.WriteLine("-------------------------");
-        foreach (var inStockName in inStockProducts)
-        {
-            Console.WriteLine($"{++instockCounter}. {inStockName}\n");
-        }
-        Console.WriteLine("-------------------------");
-    }
-    else
-    {
-        Console.WriteLine("There isn't any instock product now.");
-    }
-    Console.WriteLine();
-}
-
+#region Option 8
 static void PrintAllProductsList(ProductLogic productLogic)
 {
     List<Product> allProducts = productLogic.GetAllProducts();
@@ -322,3 +288,52 @@ static void PrintAllProductsList(ProductLogic productLogic)
     }
     Console.WriteLine();
 }
+#endregion
+
+#region Option 9
+static void PrintInStockProductNamesList(ProductLogic productLogic)
+{
+    List<string> inStockProducts = productLogic.GetOnlyInStockProducts();
+    if (inStockProducts?.Count > 0)
+    {
+        int instockCounter = 0;
+        Console.WriteLine("\nin-stock product names:");
+        Console.WriteLine("-------------------------");
+        foreach (var inStockName in inStockProducts)
+        {
+            Console.WriteLine($"{++instockCounter}. {inStockName}\n");
+        }
+        Console.WriteLine("-------------------------");
+    }
+    else
+    {
+        Console.WriteLine("There isn't any instock product now.");
+    }
+    Console.WriteLine();
+}
+#endregion
+
+#region Option 10
+static void PrintLOutOfProductsList(ProductLogic productLogic)
+{
+    List<Product> outOfStockProducts = productLogic.GetOutOfStockProducts();
+    if (outOfStockProducts?.Count > 0)
+    {
+        int outOfstockCounter = 0;
+        Console.WriteLine("\nOut-of-stock products:");
+        Console.WriteLine("-------------------------");
+        foreach (var product in outOfStockProducts)
+        {
+            Console.WriteLine($"{++outOfstockCounter}. {product}\n");
+        }
+        Console.WriteLine("-------------------------");
+    }
+    else
+    {
+        Console.WriteLine("There isn't any out-of-stock product now.");
+    }
+    Console.WriteLine();
+}
+#endregion
+
+
