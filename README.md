@@ -1,5 +1,7 @@
-4/25: Added option 8 showing all products and 10 showing out-of-stock
-	products. Also changed option 3 to 9 to show instock products.
+4/24: 	Added DecimalExtensions class for static and extension 	methods. and used those for option 2 in Program class.
+	Refactored main class(Program.cs) creating some methods.
+	Added option 8 showing all products and 10 showing out-of-		stock products. Also changed option 3 to 9 to show instock products.
+	
 
 4/16: Updated for PetStore Part 4.
 	Added IProductLogic interface with two abstract methods. 	ProductLogic class implements IProductLogic.

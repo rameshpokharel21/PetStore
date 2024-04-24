@@ -1,6 +1,5 @@
 ﻿using ProductCollection;
-using System.Diagnostics;
-using System.Xml.Linq;
+
 
 /*
 
@@ -225,24 +224,32 @@ static void PrintProductByName(ProductLogic logic, string name)
 
     if (food is not null)
     {
+        decimal discountedPriceStatic = Math.Round(DecimalExtensions.DiscountPrice(food.Price), 2);
+        decimal discountedPriceExtension = Math.Round(DecimalExtensions.DiscountThisPrice(food.Price), 2);
         Console.WriteLine(
             $"""
 
                     Here is the cat food product:
                     -------------------------
                     {food.ToString()}
+                    Discounted Price: {discountedPriceStatic};
+                    Discounted Price: {discountedPriceExtension};
                     -------------------------
                     """
             );
     }
     else if (leash is not null)
     {
+        decimal discountedPriceStatic = Math.Round(DecimalExtensions.DiscountPrice(leash.Price), 2);
+        decimal discountedPriceExtension = Math.Round(DecimalExtensions.DiscountThisPrice(leash.Price), 2);
         Console.WriteLine(
            $"""
 
                     Here is the dog leash product:
                     -------------------------
                     {leash.ToString()}
+                    Discounted Price: {discountedPriceStatic};
+                    Discounted Price: {discountedPriceExtension};
                     -------------------------
                     """
            );
