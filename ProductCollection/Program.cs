@@ -28,8 +28,6 @@ while (!userInput.Equals("exit", StringComparison.OrdinalIgnoreCase))
     /*
     First get user inputs for parent class Properties
     which is inherited to all derived classes
-    For null name it takes "no name".
-    when user enters 1:
     enforces user to input right data type
     */
 
@@ -41,7 +39,7 @@ while (!userInput.Equals("exit", StringComparison.OrdinalIgnoreCase))
             Console.WriteLine("\nType catfood or dogleash to add them:");
             string? typeName = Console.ReadLine() ?? "none";
 
-            //repeatedly asks user to enter dogleash or catfood as one word if the input is different 
+           
             while (!typeName.Equals("dogleash", StringComparison.OrdinalIgnoreCase) && !typeName.Equals("catfood", StringComparison.OrdinalIgnoreCase))
             {
                 Console.WriteLine($"Wrong prduct type: {typeName}.");
@@ -52,7 +50,6 @@ while (!userInput.Equals("exit", StringComparison.OrdinalIgnoreCase))
 
             }
 
-            //enforces unique product name
             do
             {
                 Console.WriteLine("\nEnter unique name for the product:");
@@ -86,8 +83,6 @@ while (!userInput.Equals("exit", StringComparison.OrdinalIgnoreCase))
             Console.WriteLine($"The received value is {description}");
 
             /*
-             CatFood class Properties input from user
-            and initializing and displaying CatFood object
             User is not allowed to enter other types for double
             and bool.
             */
@@ -110,7 +105,7 @@ while (!userInput.Equals("exit", StringComparison.OrdinalIgnoreCase))
                 while (!bool.TryParse(Console.ReadLine(), out kittenFood));
                 Console.WriteLine($"The received value is {kittenFood}");
 
-                //creating CatFood object with given Properties
+                
                 catFood = new CatFood(name, price, quantity, description, weightPounds, kittenFood);
 
 
@@ -121,11 +116,8 @@ while (!userInput.Equals("exit", StringComparison.OrdinalIgnoreCase))
             }
 
             /*
-             DogLeash class Properties entries from user
-            and initializing and displaying DogLeash object
-            if user is not allowed to enter differt data type
-            for int type.
-            if string is null, it takes 'no material type' for Material Property
+            if user is not allowed to enter different data type
+            for int type.           
             */
             else if (typeName.Equals("dogleash", StringComparison.OrdinalIgnoreCase))
             {
@@ -143,9 +135,8 @@ while (!userInput.Equals("exit", StringComparison.OrdinalIgnoreCase))
                 material = Console.ReadLine() ?? "no material type";
                 Console.WriteLine($"The received value is {material}");
 
-                //create object with the values provided
+                
                 dogLeash = new DogLeash(name, price, quantity, description, lengthInches, material);
-
 
                 productLogic.AddProduct((DogLeash)dogLeash);
 
@@ -158,7 +149,7 @@ while (!userInput.Equals("exit", StringComparison.OrdinalIgnoreCase))
 
             Console.WriteLine("\nEnter product name:");
 
-            string? productName = Console.ReadLine().ToLower() ?? "no name";
+            string? productName = Console.ReadLine()?.ToLower() ?? "no name";
 
 
             Product food = productLogic.GetCatFoodByName(productName);
@@ -167,15 +158,26 @@ while (!userInput.Equals("exit", StringComparison.OrdinalIgnoreCase))
 
             if (food is not null)
             {
-                Console.WriteLine("\nHere is the cat food product:\n");
-                Console.WriteLine(food.ToString());
+                Console.WriteLine(
+                    $"""
+                    Here is the cat food product:
+                    -------------------------
+                    {food.ToString()}
+                    -------------------------
+                    """
+                    );
             }
 
             else if (leash is not null)
             {
-                Console.WriteLine("\nHere is the dog leash product:\n");
-                Console.WriteLine(leash.ToString());
-
+                Console.WriteLine(
+                   $"""
+                    Here is the dog leash product:
+                    -------------------------
+                    {leash.ToString()}
+                    -------------------------
+                    """
+                   );
             }
             else
             {
@@ -183,17 +185,69 @@ while (!userInput.Equals("exit", StringComparison.OrdinalIgnoreCase))
             }
             break;
 
-        case 3:
-
-            List<string> inStockProducts = productLogic.GetOnlyInStockProducts();
-            int counter = 0;
-            Console.WriteLine("\nProduct names in stock:");
-            foreach (var prod in inStockProducts)
+        case 8:
+          
+            List<Product> allProducts = productLogic.GetAllProducts();
+            if (allProducts?.Count > 0)
             {
-                Console.WriteLine($"{++counter}. {prod}");
+                int allProductCounter = 0;
+                Console.WriteLine("\nAll products list:");
+                Console.WriteLine("-------------------------");
+                foreach (var product in allProducts)
+                {
+                    Console.WriteLine($"{++allProductCounter}. {product}\n");
+                }
+                Console.WriteLine("-------------------------");
+            }
+            else
+            {
+                Console.WriteLine("There isn't any product now.");
             }
             Console.WriteLine();
             break;
+
+        case 9:
+
+            List<string> inStockProducts = productLogic.GetOnlyInStockProducts();
+            if (inStockProducts?.Count > 0)
+            {
+                int instockCounter = 0;
+                Console.WriteLine("\nin-stock product names:");
+                Console.WriteLine("-------------------------");
+                foreach (var inStockName in inStockProducts)
+                {
+                    Console.WriteLine($"{++instockCounter}. {inStockName}\n");
+                }
+                Console.WriteLine("-------------------------");
+            }
+            else
+            {
+                Console.WriteLine("There isn't any instock product now.");
+            }
+            Console.WriteLine();
+            break;
+
+        case 10:
+
+            List<Product> outOfStockProducts = productLogic.GetOutOfStockProducts();
+            if (outOfStockProducts?.Count > 0)
+            {
+                int outOfstockCounter = 0;
+                Console.WriteLine("\nOut-of-stock products:");
+                Console.WriteLine("-------------------------");
+                foreach (var product in outOfStockProducts)
+                {
+                    Console.WriteLine($"{++outOfstockCounter}. {product}\n");
+                }
+                Console.WriteLine("-------------------------");
+            }
+            else
+            {
+                Console.WriteLine("There isn't any out-of-stock product now.");
+            }
+            Console.WriteLine();
+            break;
+
 
         default:
             Console.WriteLine($"\nWrong input: {userInput}");
@@ -208,12 +262,13 @@ while (!userInput.Equals("exit", StringComparison.OrdinalIgnoreCase))
 Console.WriteLine("\nBye bye!\n");
 
 
-//showing instructions for user
 static void PrintMessages()
 {
     Console.WriteLine("\nPress 1 to add a Product.");
     Console.WriteLine("Press 2 to describe a product by name.");
-    Console.WriteLine("Press 3 to list instock products:");
+    Console.WriteLine("Press 8 to list all products:");
+    Console.WriteLine("Press 9 to list instock products:");
+    Console.WriteLine("Press 10 to list out-of-stock products:");
     Console.WriteLine("Type 'exit' to quit.");
 }
 

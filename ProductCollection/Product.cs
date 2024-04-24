@@ -8,7 +8,7 @@ namespace ProductCollection;
 public class Product(string name, decimal price, int quantity, string description)
 {
 
-    public string Name { get; private set; } = name;
+    public string Name { get; private set; } = name.ToLower();
 
     public decimal Price { get; private set; } = price;
     public int Quantity { get; private set; } = quantity;

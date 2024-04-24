@@ -1,8 +1,4 @@
-﻿/*
- * DogLeash is child class of base class Product
- * It has two own Properties LengthInches of type int and Material of type string.
- * It inherits Name of type string, Price of type decimal, Quantity of type int and Description of type string from it's parent class Product.
- */
+﻿
 
 namespace ProductCollection;
 

@@ -1,3 +1,6 @@
+4/25: Added option 8 showing all products and 10 showing out-of-stock
+	products. Also changed option 3 to 9 to show instock products.
+
 4/16: Updated for PetStore Part 4.
 	Added IProductLogic interface with two abstract methods. 	ProductLogic class implements IProductLogic.
 	Changed Program class with main method: Added option 3 to list 	in-stock products. Modified if else if logic with switch 		statement.
