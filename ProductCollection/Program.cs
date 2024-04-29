@@ -103,7 +103,7 @@ static void PrintMessages()
         """
 
         Press 1 to add a Product.
-        Press 2 to describe a product by name.
+        Press 2 to find a product by name.
         Press 8 to list all products.
         Press 9 to list instock products.
         Press 10 to list out-of-stock products.
