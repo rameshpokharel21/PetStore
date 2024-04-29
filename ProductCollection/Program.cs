@@ -1,69 +1,21 @@
 ﻿using ProductCollection;
 
-#region main program
-
-/*
-
-Repeats the process as long as user doesn't type 'exit'
-Enforces user to enter right type using loop.
-product name string will be converted to lower case
-for using as a key (or id) for the product.
-*/
 
 ProductLogic productLogic = new ProductLogic();
-PrintMessages();
-string? userInput = Console.ReadLine() ?? "0";
+UserOptionFactory.Create(productLogic);
+PrintGoodByeMessage();
 
-while (!userInput.Equals("exit", StringComparison.OrdinalIgnoreCase))
-
+static void PrintGoodByeMessage()
 {
-    int convertedInput = 0;
-    int.TryParse(userInput, out convertedInput);
-
-    /*
-    First get user inputs for parent class Properties
-    which is inherited to all derived classes
-    */
-
-    switch (convertedInput)
-    {
-        case 1:
-            AddProductToList(productLogic);
-            break;
-
-        case 2:
-            PrintProductByName(productLogic);
-            break;
-
-        case 8:
-            PrintAllProductsList(productLogic);
-            break;
-
-        case 9:
-            PrintInStockProductNamesList(productLogic);
-            break;
-
-        case 10:
-            PrintLOutOfProductsList(productLogic);
-            break;
-
-        default:
-            Console.WriteLine($"\nWrong input: {userInput}");
-            break;
-    }
-
-    PrintMessages();
-    userInput = Console.ReadLine() ?? "0";
+    Console.WriteLine(@"
+        Thank you for visiting Pet Store.
+        Bye bye!
+        ");
 
 }
 
-Console.WriteLine(@"
-    Thank you for visiting Pet Store.
-    Bye bye!
-        ");
-#endregion
 
-
+<<<<<<< HEAD
 #region Option 1
 static void AddProductToList( ProductLogic productLogic)
 {
@@ -336,4 +288,6 @@ static void PrintLOutOfProductsList(ProductLogic productLogic)
 }
 #endregion
 
+=======
+>>>>>>> 1b9281b9ab8546869d603df653adbffdd1aada17
 
