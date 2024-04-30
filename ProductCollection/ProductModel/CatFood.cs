@@ -1,6 +1,4 @@
-﻿
-
-namespace ProductCollection;
+﻿namespace ProductCollection.ProductModel;
 
 public class CatFood(string name, decimal price, int quantity, string description, double weightPounds, bool kittenFood) : Product(name, price, quantity, description)
 {

@@ -1,4 +1,6 @@
-namespace ProductCollection;
+using ProductCollection.ProductModel;
+
+namespace ProductCollection.UI;
 
 public static class ProductEntryPrompts
 {
@@ -108,4 +110,4 @@ public static class ProductEntryPrompts
         return materialType;
     }
 
-} 
+}

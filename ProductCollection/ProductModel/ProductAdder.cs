@@ -1,10 +1,12 @@
+using ProductCollection.ProductModel;
+using ProductCollection.UI;
 
-namespace ProductCollection;
+namespace ProductCollection.ProductModel;
 
 public class ProductAdder
 {
 
-    public static void AddProductToList( ProductLogic productLogic)
+    public static void AddProductToList(ProductLogic productLogic)
     {
         string typeName = ProductEntryPrompts.GetProductType();
         string name = ProductEntryPrompts.GetProductName(productLogic);

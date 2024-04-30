@@ -1,4 +1,6 @@
-﻿namespace ProductCollection;
+﻿using ProductCollection.ProductModel;
+
+namespace ProductCollection.ProductModel;
 
 public class ProductLogic : IProductLogic
 {
@@ -12,24 +14,24 @@ public class ProductLogic : IProductLogic
         _dogLeash = new Dictionary<string, DogLeash>();
         _catFood = new Dictionary<string, CatFood>();
 
-        
+
         AddProduct(new DogLeash("amazon leash", 23.33m, 2, "Strong and reliable", 48, "Leather"));
         AddProduct(new CatFood("freshy fish", 35.50m, 3, "healthy for cat", 2.5, true));
-        AddProduct(new DogLeash("homeMade leash", 10.50m, 0, "local product", 60, "Plastic"));       
+        AddProduct(new DogLeash("homeMade leash", 10.50m, 0, "local product", 60, "Plastic"));
     }
 
     public void AddProduct(Product product)
     {
         _products.Add(product);
 
-        if(product is DogLeash)
+        if (product is DogLeash)
         {
-            _dogLeash.Add(key: product.Name, value: (DogLeash) product);
+            _dogLeash.Add(key: product.Name, value: (DogLeash)product);
         }
 
         if (product is CatFood)
         {
-            _catFood.Add(key: product.Name, value:( CatFood) product);
+            _catFood.Add(key: product.Name, value: (CatFood)product);
         }
     }
 
@@ -40,30 +42,33 @@ public class ProductLogic : IProductLogic
 
 
     //if key is not found, null is returned
-    public DogLeash GetDogLeashByName(string name)
-    {   try{
-            
-            return _dogLeash[name];           
+    public Product GetDogLeashByName(string name)
+    {
+        try
+        {
+
+            return _dogLeash[name] as DogLeash;
         }
-        catch(Exception)
+        catch (Exception)
         {
             return null;
         }
- 
+
     }
 
+
     //if key is not found, null is returned
-    public CatFood GetCatFoodByName(string name)
+    public Product GetCatFoodByName(string name)
     {
         try
-        {            
-            return _catFood[name];         
+        {
+            return _catFood[name] as CatFood;
         }
         catch (Exception)
-        {  
+        {
             return null;
         }
-        
+
     }
 
     public List<string> GetOnlyInStockProducts()
@@ -72,7 +77,7 @@ public class ProductLogic : IProductLogic
             .Where(product => product.Quantity > 0)
             .Select(product => product.Name)
             .ToList();
-            
+
     }
 
     public List<Product> GetOutOfStockProducts()

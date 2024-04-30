@@ -1,4 +1,7 @@
-namespace ProductCollection;
+using ProductCollection.Helper;
+using ProductCollection.ProductModel;
+
+namespace ProductCollection.ProductListCreators;
 
 public class ProductOutOfStockList
 {
@@ -6,8 +9,8 @@ public class ProductOutOfStockList
     {
         List<Product> outOfStockProducts = productLogic.GetOutOfStockProducts();
         if (outOfStockProducts?.Count > 0)
-        {      
-            PrintHelper.PrintList(outOfStockProducts, "Out-of-stock products");         
+        {
+            PrintHelper.PrintList(outOfStockProducts, "Out-of-stock products");
         }
         else
         {

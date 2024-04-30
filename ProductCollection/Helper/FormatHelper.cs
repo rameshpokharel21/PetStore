@@ -1,8 +1,9 @@
-namespace ProductCollection;
+namespace ProductCollection.Helper;
 
 public static class FormatHelper
 {
-    public static void PrintDottedLine(){
+    public static void PrintDottedLine()
+    {
         Console.WriteLine("-------------------------");
 
     }

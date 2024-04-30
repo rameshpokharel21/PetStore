@@ -1,6 +1,4 @@
-﻿
-
-namespace ProductCollection;
+﻿namespace ProductCollection.ProductModel;
 
 public class DogLeash(string name, decimal price, int quantity, string description, int lengthInches, string material) : Product(name, price, quantity, description)
 {

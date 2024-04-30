@@ -1,10 +1,17 @@
-namespace ProductCollection;
+using System.Runtime.CompilerServices;
+using ProductCollection.Helper;
+using ProductCollection.ProductListCreators;
+using ProductCollection.ProductModel;
+
+namespace ProductCollection.UI;
 
 public static class UserOptionFactory
 {
-    public static void Create(ProductLogic logic){
-    
+    public static void Create(ProductLogic logic)
+    {
+
         PrintHelper.PrintInstructions();
+
         string? userInput = Console.ReadLine() ?? "0";
 
         while (!userInput.Equals("exit", StringComparison.OrdinalIgnoreCase))

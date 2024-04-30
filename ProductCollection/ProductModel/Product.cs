@@ -2,7 +2,7 @@
  * This is a base class with 4 Properties with both readable and writable accessors
  */
 
-namespace ProductCollection;
+namespace ProductCollection.ProductModel;
 
 
 public class Product(string name, decimal price, int quantity, string description)

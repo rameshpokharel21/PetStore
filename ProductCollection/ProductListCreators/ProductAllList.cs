@@ -1,4 +1,8 @@
-namespace ProductCollection;
+using ProductCollection.Helper;
+using ProductCollection.ProductModel;
+
+
+namespace ProductCollection.ProductListCreators;
 
 public class ProductAllList
 {

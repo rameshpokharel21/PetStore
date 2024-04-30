@@ -1,4 +1,7 @@
-namespace ProductCollection;
+using ProductCollection.Helper;
+using ProductCollection.ProductModel;
+
+namespace ProductCollection.ProductListCreators;
 
 public class ProductInStockList
 {
@@ -6,9 +9,9 @@ public class ProductInStockList
     {
         List<string> inStockProducts = productLogic.GetOnlyInStockProducts();
         if (inStockProducts.Count > 0)
-        {           
+        {
             PrintHelper.PrintList(inStockProducts, "In-stock product names:");
-        
+
         }
         else
         {
