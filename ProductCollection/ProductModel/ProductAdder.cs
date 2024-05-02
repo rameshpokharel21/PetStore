@@ -6,7 +6,7 @@ namespace ProductCollection.ProductModel;
 public class ProductAdder
 {
 
-    public static void AddProductToList(ProductLogic productLogic)
+    public static void AddProductToList(IProductLogic productLogic)
     {
         string typeName = ProductEntryPrompts.GetProductType();
         string name = ProductEntryPrompts.GetProductName(productLogic);

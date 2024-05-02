@@ -4,7 +4,7 @@ namespace ProductCollection.UI;
 
 public static class ProductEntryPrompts
 {
-    public static string GetProductName(ProductLogic logic)
+    public static string GetProductName(IProductLogic logic)
     {
         string? productName;
         do

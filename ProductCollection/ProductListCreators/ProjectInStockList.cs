@@ -5,7 +5,7 @@ namespace ProductCollection.ProductListCreators;
 
 public class ProductInStockList
 {
-    public static void PrintInStockProductNamesList(ProductLogic productLogic)
+    public static void PrintInStockProductNamesList(IProductLogic productLogic)
     {
         List<string> inStockProducts = productLogic.GetOnlyInStockProducts();
         if (inStockProducts.Count > 0)

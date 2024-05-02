@@ -5,7 +5,7 @@ namespace ProductCollection.ProductListCreators;
 
 public class ProductOutOfStockList
 {
-    public static void PrintLOutOfProductsList(ProductLogic productLogic)
+    public static void PrintLOutOfProductsList(IProductLogic productLogic)
     {
         List<Product> outOfStockProducts = productLogic.GetOutOfStockProducts();
         if (outOfStockProducts?.Count > 0)

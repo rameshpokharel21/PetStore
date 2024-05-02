@@ -1,10 +1,22 @@
-﻿using ProductCollection.ProductModel;
+﻿using Microsoft.Extensions.DependencyInjection;
+using ProductCollection.ProductModel;
 using ProductCollection.UI;
 
+var services = CreateServiceCollection();
 
-ProductLogic productLogic = new ProductLogic();
+IProductLogic? productLogic = services.GetService<IProductLogic>();//new ProductLogic();
+
+
+
 UserOptionFactory.Create(productLogic);
 PrintGoodByeMessage();
+
+static IServiceProvider CreateServiceCollection()
+{
+    return new ServiceCollection()
+        .AddTransient<IProductLogic, ProductLogic>()
+        .BuildServiceProvider();
+}
 
 static void PrintGoodByeMessage()
 {

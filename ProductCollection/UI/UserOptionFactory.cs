@@ -7,7 +7,7 @@ namespace ProductCollection.UI;
 
 public static class UserOptionFactory
 {
-    public static void Create(ProductLogic logic)
+    public static void Create(IProductLogic logic)
     {
 
         PrintHelper.PrintInstructions();

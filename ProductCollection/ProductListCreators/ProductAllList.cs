@@ -6,7 +6,7 @@ namespace ProductCollection.ProductListCreators;
 
 public class ProductAllList
 {
-    public static void PrintAllProductsList(ProductLogic productLogic)
+    public static void PrintAllProductsList(IProductLogic productLogic)
     {
         List<Product> allProducts = productLogic.GetAllProducts();
         if (allProducts?.Count > 0)
