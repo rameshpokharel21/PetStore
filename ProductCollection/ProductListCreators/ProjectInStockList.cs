@@ -1,5 +1,5 @@
 using ProductCollection.Helper;
-using ProductCollection.ProductModel;
+using ProductCollection.Logic;
 
 namespace ProductCollection.ProductListCreators;
 

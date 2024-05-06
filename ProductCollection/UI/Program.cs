@@ -1,10 +1,10 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using ProductCollection.ProductModel;
+using ProductCollection.Logic;
 using ProductCollection.UI;
 
 var services = CreateServiceCollection();
 
-IProductLogic? productLogic = services.GetService<IProductLogic>();//new ProductLogic();
+IProductLogic? productLogic = services.GetService<IProductLogic>();
 
 
 

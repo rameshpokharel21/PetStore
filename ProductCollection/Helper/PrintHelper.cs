@@ -18,10 +18,6 @@ public static class PrintHelper
             """
             );
     }
-
-
-
-
     public static void PrintList<T>(List<T> list, string heading)
     {
         int counter = 0;

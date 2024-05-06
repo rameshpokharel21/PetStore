@@ -1,7 +1,7 @@
 using System.Runtime.CompilerServices;
 using ProductCollection.Helper;
+using ProductCollection.Logic;
 using ProductCollection.ProductListCreators;
-using ProductCollection.ProductModel;
 
 namespace ProductCollection.UI;
 
@@ -19,11 +19,6 @@ public static class UserOptionFactory
         {
             int convertedInput = 0;
             int.TryParse(userInput, out convertedInput);
-
-            /*
-            First get user inputs for parent class Properties
-            which is inherited to all derived classes
-            */
 
             switch (convertedInput)
             {

@@ -1,3 +1,12 @@
+5/5: Adding Generic type for GetProductByName() method. Needs improvement: 1. Finding prodcut by name depends on null return type
+   2. I am adding DogLeash and CatFood separately it should be polymorphic based on generic type defined.
+
+5/5: Using JsonSerializer Deserialize() mehtod for product input form user and catching JsonException for structural validation. Adding FluentValidation package for CatFoodValidator and DogLeashValidator classes for business logic validation. Displaying validation errors to the console.(there is code duplication in validators)
+
+5/2: Using IServiceProvider of       Microsoft.Extensions.DependencyInjection for Exercise 7
+
+4/29: Refactoring for Exercise 6
+
 4/24: 	Added DecimalExtensions class for static and extension 	methods. and used those for option 2 in Program class.
 	Refactored main class(Program.cs) creating some methods.
 	Added option 8 showing all products and 10 showing out-of-		stock products. Also changed option 3 to 9 to show instock products.

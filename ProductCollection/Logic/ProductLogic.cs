@@ -1,18 +1,20 @@
 ﻿using ProductCollection.ProductModel;
 
-namespace ProductCollection.ProductModel;
+namespace ProductCollection.Logic;
 
 public class ProductLogic : IProductLogic
 {
     private List<Product> _products;
     private Dictionary<string, DogLeash> _dogLeash;
     private Dictionary<string, CatFood> _catFood;
+    // private Dictionary<string, T> _product;
 
     public ProductLogic()
     {
         _products = new List<Product>();
         _dogLeash = new Dictionary<string, DogLeash>();
         _catFood = new Dictionary<string, CatFood>();
+        //_product = new Dictionary<string, T>();
 
 
         AddProduct(new DogLeash("amazon leash", 23.33m, 2, "Strong and reliable", 48, "Leather"));
@@ -22,17 +24,23 @@ public class ProductLogic : IProductLogic
 
     public void AddProduct(Product product)
     {
+
+
+        if (product is DogLeash && !_dogLeash.ContainsKey(product.Name) && !_catFood.ContainsKey(product.Name))
+        {
+            _dogLeash.Add(key: product.Name.ToLower(), value: (DogLeash)product);
+        }
+
+        else if (product is CatFood && !_catFood.ContainsKey(product.Name) && !_dogLeash.ContainsKey(product.Name))
+        {
+            _catFood.Add(product.Name.ToLower(), (CatFood)product);
+        }
+        else
+        {
+            throw new ArgumentException("\nProduct not added: Duplicate Key.");
+        }
         _products.Add(product);
 
-        if (product is DogLeash)
-        {
-            _dogLeash.Add(key: product.Name, value: (DogLeash)product);
-        }
-
-        if (product is CatFood)
-        {
-            _catFood.Add(key: product.Name, value: (CatFood)product);
-        }
     }
 
     public List<Product> GetAllProducts()
@@ -41,35 +49,33 @@ public class ProductLogic : IProductLogic
     }
 
 
-    //if key is not found, null is returned
-    public Product GetDogLeashByName(string name)
+
+    public T? GetProductByName<T>(string name) where T : Product
+
     {
         try
         {
-
-            return _dogLeash[name] as DogLeash;
+            name = name.ToLower();
+            if (typeof(T) == typeof(DogLeash))
+            {
+                return _dogLeash[name] as T;
+            }
+            else if (typeof(T) == typeof(CatFood))
+            {
+                return _catFood[name] as T;
+            }
+            else
+            {
+                throw new ArgumentException($"{name} is not a product.");
+            }
         }
-        catch (Exception)
+        catch (Exception ex)
         {
             return null;
         }
-
+       
     }
 
-
-    //if key is not found, null is returned
-    public Product GetCatFoodByName(string name)
-    {
-        try
-        {
-            return _catFood[name] as CatFood;
-        }
-        catch (Exception)
-        {
-            return null;
-        }
-
-    }
 
     public List<string> GetOnlyInStockProducts()
     {

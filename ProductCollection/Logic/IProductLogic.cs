@@ -1,4 +1,6 @@
-﻿namespace ProductCollection.ProductModel;
+﻿using ProductCollection.ProductModel;
+
+namespace ProductCollection.Logic;
 
 public interface IProductLogic
 {
@@ -6,6 +8,7 @@ public interface IProductLogic
     List<Product> GetAllProducts();
     List<string> GetOnlyInStockProducts();
     List<Product> GetOutOfStockProducts();
-    Product GetDogLeashByName(string name);
-    Product GetCatFoodByName(string name);
+    public T? GetProductByName<T>(string name) where T : Product;
+
+
 }

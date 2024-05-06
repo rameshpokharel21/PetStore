@@ -1,5 +1,6 @@
 using ProductCollection.Extension;
 using ProductCollection.Helper;
+using ProductCollection.Logic;
 using ProductCollection.ProductModel;
 
 namespace ProductCollection.ProductListCreators;
@@ -8,10 +9,11 @@ public class ProductListByName
 {
     public static void PrintProductByName(IProductLogic logic)
     {
+       
         Console.WriteLine("\nEnter product name:");
         string? name = Console.ReadLine()?.ToLower() ?? "no name";
-        Product food = logic.GetCatFoodByName(name);
-        Product leash = logic.GetDogLeashByName(name);
+        CatFood food = (CatFood)logic.GetProductByName<CatFood>(name);
+        DogLeash leash = (DogLeash)logic.GetProductByName<DogLeash>(name);
 
         if (food is not null)
         {
@@ -32,7 +34,9 @@ public class ProductListByName
         }
         else
         {
-            Console.WriteLine($"The name is not in the list: {name}");
+            Console.WriteLine($"{name} is not found in the list!");
         }
+        
+        
     }
 }
