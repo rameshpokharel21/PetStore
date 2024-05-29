@@ -10,15 +10,16 @@ public  static class UserEntry
 {
     public static Product GetProductFromUser()
     {
-        bool isValid = false;
+        bool isProductValid = true;
         do
         {
             try
             {
                 Console.WriteLine("\nEnter the product in Json format:");
                 String? userInput = Console.ReadLine();
-
+                ArgumentNullException.ThrowIfNull(userInput);
                 Product? product = JsonSerializer.Deserialize<Product>(userInput);
+                ArgumentNullException.ThrowIfNull(product);
                 var validator = new ProductValidator();
                 FluentValidation.Results.ValidationResult? productResults = validator.Validate(product);
 
@@ -30,6 +31,7 @@ public  static class UserEntry
                         Console.WriteLine(error.ErrorMessage);
                     }
                     FormatHelper.PrintDottedLine();
+                    isProductValid = false;
                 }
                 else
                 {
@@ -49,7 +51,7 @@ public  static class UserEntry
             {
                 Console.WriteLine(ex.Message);
             }
-        } while (!isValid);
+        } while (!isProductValid);
         return null;
     }
 

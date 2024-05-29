@@ -7,7 +7,7 @@ namespace PetStore.Data;
 
 public class Product(string name, decimal price, int quantity, string description)
 {
-    [Key]
+    
     public int ProductId { get; set; }
     public string Name { get; set; } = name.ToLower();
 

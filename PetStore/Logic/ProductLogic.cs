@@ -13,13 +13,7 @@ public class ProductLogic : IProductLogic
      
         _repository = repository;
 
-       
-
-/*
-        AddProduct(new DogLeash("amazon leash", 23.33m, 2, "Strong and reliable", 48, "Leather"));
-        AddProduct(new CatFood("freshy fish", 35.50m, 3, "healthy for cat", 2.5, true));
-        AddProduct(new DogLeash("homeMade leash", 10.50m, 0, "local product", 60, "Plastic"));
-    */
+     
         }
 
     public void AddProduct(Product product)

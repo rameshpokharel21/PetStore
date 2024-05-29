@@ -6,8 +6,8 @@ using ProductCollection.UI;
 var services = CreateServiceCollection();
 
 IProductLogic? productLogic = services.GetService<IProductLogic>();
-IProductRepository? repository = services.GetService<IProductRepository>();
-
+//IProductRepository? repository = services.GetService<IProductRepository>();
+ArgumentNullException.ThrowIfNull(productLogic);
 
 UserOptionFactory.Create(productLogic);
 PrintGoodByeMessage();

@@ -10,6 +10,7 @@ public static class UserOptionFactory
 {
     public static void Create(IProductLogic logic)
     {
+        ArgumentNullException.ThrowIfNull(logic);
 
         PrintHelper.PrintInstructions();
 

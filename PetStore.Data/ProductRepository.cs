@@ -1,7 +1,6 @@
 ﻿
 
 using Microsoft.EntityFrameworkCore;
-using SQLitePCL;
 using System.Collections.Immutable;
 
 namespace PetStore.Data;
