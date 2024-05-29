@@ -27,7 +27,7 @@ public static class UserOptionFactory
                     break;
 
                 case 2:
-                    ProductListByName.PrintProductByName(logic);
+                    ProductListById.PrintProductById(logic);
                     break;
 
                 case 8:
@@ -35,11 +35,8 @@ public static class UserOptionFactory
                     break;
 
                 case 9:
-                    ProductInStockList.PrintInStockProductNamesList(logic);
-                    break;
-
-                case 10:
-                    ProductOutOfStockList.PrintLOutOfProductsList(logic);
+                    
+                    
                     break;
 
                 default:

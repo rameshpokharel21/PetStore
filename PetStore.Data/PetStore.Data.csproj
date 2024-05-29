@@ -18,8 +18,5 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\ProductCollection\PetStore.csproj" />
-  </ItemGroup>
 
 </Project>

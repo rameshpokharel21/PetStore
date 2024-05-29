@@ -1,6 +1,6 @@
 using ProductCollection.Helper;
 using ProductCollection.Logic;
-using ProductCollection.ProductModel;
+using PetStore.Data;
 
 
 namespace ProductCollection.ProductListCreators;
@@ -9,7 +9,7 @@ public class ProductAllList
 {
     public static void PrintAllProductsList(IProductLogic productLogic)
     {
-        List<Product> allProducts = productLogic.GetAllProducts();
+        List<Product> allProducts = (List<Product>)productLogic.GetAllProducts();
         if (allProducts?.Count > 0)
         {
             PrintHelper.PrintList(allProducts, "All products list");

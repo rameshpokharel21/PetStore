@@ -1,14 +1,12 @@
-﻿using ProductCollection.ProductModel;
+﻿using PetStore.Data;
 
 namespace ProductCollection.Logic;
 
 public interface IProductLogic
 {
     void AddProduct(Product product);
-    List<Product> GetAllProducts();
-    List<string> GetOnlyInStockProducts();
-    List<Product> GetOutOfStockProducts();
-    public T? GetProductByName<T>(string name) where T : Product;
-
+    IEnumerable<Product> GetAllProducts();
+    Product GetProductById(int id);
+    void DeleteAProductById(int id);
 
 }

@@ -9,10 +9,9 @@ public static class PrintHelper
             """
 
             Press 1 to add a Product.
-            Press 2 to describe a product by name.
+            Press 2 to find a product by id.
             Press 8 to list all products.
-            Press 9 to list instock product names.
-            Press 10 to list out-of-stock products.
+            Press 9 to delete a product by id.
             Type 'exit' to quit.
 
             """
