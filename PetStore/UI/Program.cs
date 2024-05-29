@@ -1,11 +1,12 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using PetStore.Data;
 using ProductCollection.Logic;
 using ProductCollection.UI;
 
 var services = CreateServiceCollection();
 
 IProductLogic? productLogic = services.GetService<IProductLogic>();
-
+IProductRepository? repository = services.GetService<IProductRepository>();
 
 
 UserOptionFactory.Create(productLogic);
@@ -15,6 +16,7 @@ static IServiceProvider CreateServiceCollection()
 {
     return new ServiceCollection()
         .AddTransient<IProductLogic, ProductLogic>()
+        .AddTransient<IProductRepository, ProductRepository>()
         .BuildServiceProvider();
 }
 

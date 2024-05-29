@@ -1,4 +1,5 @@
 using System.Runtime.CompilerServices;
+using PetStore.ProductQueryResults;
 using ProductCollection.Helper;
 using ProductCollection.Logic;
 using ProductCollection.ProductListCreators;
@@ -35,7 +36,7 @@ public static class UserOptionFactory
                     break;
 
                 case 9:
-                    
+                    DeleteProductByProvidedId.deleteAProductById(logic);
                     
                     break;
 

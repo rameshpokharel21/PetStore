@@ -15,24 +15,6 @@ public class ProductRepository : IProductRepository
         _context = context;
     }
 
-   /* public void AddProducts()
-    {
-        Console.WriteLine("Inserting a new Product");
-      
-        _context.Products.Add(new ProductEntity(
-        
-            name: "fresh meat", price: 12.50M, quantity: 1, description: "good for dog and cat"
-        ));
-
-        _context.Products.Add(new ProductEntity(
-
-           name: "dog leash", price: 12.20M, quantity: 1, description: "a strong leash"
-       ));
-
-
-        _context.SaveChanges();
-    }*/
-
     public void AddProduct(Product product)
     {
         _context.Products.Add(product);
