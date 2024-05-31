@@ -33,7 +33,7 @@ public class ProductRepository : IProductRepository
 
     public IEnumerable<Product> GetAll()
     {
-        return _context.Products.ToImmutableList();
+        return _context.Products.ToList();
     }
 
     public async void DeleteProductById(int id)

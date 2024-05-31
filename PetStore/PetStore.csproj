@@ -16,8 +16,4 @@
     <ProjectReference Include="..\PetStore.Data\PetStore.Data.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="ProductModel\" />
-  </ItemGroup>
-
 </Project>

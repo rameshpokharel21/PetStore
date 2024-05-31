@@ -9,7 +9,7 @@ public class ProductContext : DbContext
     public DbSet<Product> Products { get; set; }
   
 
-    public string DbPath { get; }
+    public string DbPath { get; set; }
 
     public ProductContext()
     {
