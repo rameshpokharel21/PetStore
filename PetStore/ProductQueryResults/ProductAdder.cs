@@ -1,7 +1,8 @@
 using PetStore.Data;
+using ProductCollection.Logic;
 using ProductCollection.UI;
 
-namespace ProductCollection.Logic;
+namespace PetStore.ProductQueryResults;
 
 public class ProductAdder
 {
@@ -12,7 +13,7 @@ public class ProductAdder
         {
             Product product = UserEntry.GetProductFromUser();
             productLogic.AddProduct(product);
-           
+
         }
         catch (ArgumentException ex)
         {

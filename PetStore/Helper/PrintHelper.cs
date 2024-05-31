@@ -19,12 +19,11 @@ public static class PrintHelper
     }
     public static void PrintList<T>(List<T> list, string heading)
     {
-        int counter = 0;
         Console.WriteLine($"\n{heading}:");
         FormatHelper.PrintDottedLine();
         foreach (T item in list)
         {
-            Console.WriteLine($"\n{++counter}. {item}");
+            Console.WriteLine($"\n{item}");
         }
         FormatHelper.PrintDottedLine();
     }

@@ -15,5 +15,5 @@ public class Product(string name, decimal price, int quantity, string descriptio
     public int Quantity { get; set; } = quantity;
     public string Description { get; set; } = description;
     
-    public override string ToString() => $"Name: {Name}\nPrice: {Price:C2}\nQuantity: {Quantity}\nDescription: {Description}";
+    public override string ToString() => $"ProductId: {ProductId}\nName: {Name}\nPrice: {Price:C2}\nQuantity: {Quantity}\nDescription: {Description}";
 }

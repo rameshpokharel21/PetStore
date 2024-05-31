@@ -16,8 +16,8 @@ static IServiceProvider CreateServiceCollection()
 {
     return new ServiceCollection()
         .AddDbContext<ProductContext>()
-        .AddTransient<IProductLogic, ProductLogic>()
-        .AddTransient<IProductRepository, ProductRepository>()
+        .AddScoped<IProductLogic, ProductLogic>()
+        .AddScoped<IProductRepository, ProductRepository>()
         .BuildServiceProvider();
 }
 
