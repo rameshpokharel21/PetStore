@@ -43,8 +43,7 @@ public class ProductRepository : IProductRepository
         {
             _context
             .Products
-            .Where(product => product.ProductId == id)
-            .ExecuteDelete();
+            .Remove(queryProduct);
             _context.SaveChanges();
         }
         else
