@@ -15,13 +15,16 @@ public class DeleteProductByProvidedId
         {
             Console.WriteLine("Wrong type! Enter product id:");
         }
-        if(logic.GetProductById(id) != null)
+
+        try
         {
+            Product product = logic.GetProductById(id);
             logic.DeleteAProductById(id);
+            Console.WriteLine($"Product with id {id} deleted from database.");
         }
-        else
+        catch (ArgumentNullException ex)
         {
-            Console.WriteLine($"Product with {id} is not found in the list!");
+            Console.WriteLine($"{ex.Message}");
         }
     }
 }

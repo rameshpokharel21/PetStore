@@ -13,7 +13,7 @@ public class ProductAdder
         {
             Product product = UserEntry.GetProductFromUser();
             productLogic.AddProduct(product);
-
+            Console.WriteLine("The product is added to the database.");
         }
         catch (ArgumentException ex)
         {

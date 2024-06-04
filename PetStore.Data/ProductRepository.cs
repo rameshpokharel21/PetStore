@@ -36,13 +36,22 @@ public class ProductRepository : IProductRepository
         return _context.Products.ToList();
     }
 
-    public async void DeleteProductById(int id)
+    public void DeleteProductById(int id)
     {
-     await   _context
+        Product queryProduct = GetProductById(id);
+        if (queryProduct != null)
+        {
+            _context
             .Products
             .Where(product => product.ProductId == id)
-            .ExecuteDeleteAsync();
-        _context.SaveChanges();
+            .ExecuteDelete();
+            _context.SaveChanges();
+        }
+        else
+        {
+            throw new ArgumentNullException($"{nameof(id)} not found");
+        }
+
     }
 
 }
